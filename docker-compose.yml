@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  ##
+  ##  Finnder
+  ##
+  finnder:
+    build:
+      context: .
+    environment:
+        - EXEC_ENV=local
+    restart: always
+    volumes:
+      - .:/usr/src/finnder
+    ports:
+      - "8090:80"
+    command: "gunicorn --bind 0.0.0.0:80 api:app"
+    healthcheck:
+      test: curl --fail http://localhost:8000/api/ping || exit 1
+    networks:
+      - mainnet
+
+networks:
+  mainnet:
+    driver: "bridge"
