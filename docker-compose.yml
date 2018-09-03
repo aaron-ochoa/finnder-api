@@ -11,6 +11,9 @@ services:
     environment:
         - EXEC_ENV=local
     restart: always
+    environment:
+      - YELP_CLIENT_ID=xxxxxxxxxxxxxx
+      - YELP_SECRET=xxxxxxxxxxxxxx
     volumes:
       - .:/usr/src/finnder
     ports:
