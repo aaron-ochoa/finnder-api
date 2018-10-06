@@ -21,7 +21,7 @@ class YelpService:
 
 
         response = requests.request("GET", "{}/businesses/search".format(self.url), headers=self._get_headers(), params=querystring)
-
+        print(response.json())
         restaurants = response.json()["businesses"]
         results = []
 
